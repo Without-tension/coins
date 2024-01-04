@@ -356,14 +356,14 @@ background-image: url(../img/vertical-split-slider/4.jpg);
     background: none;
     letter-spacing: 0.25em;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 15px;
     text-transform: uppercase;
     text-align: center;
     color: #fff;
     margin: 20px 0 0 0;
-    padding: 15px 25px;
+    padding: 13px 25px;
     transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 14px;
+    border-radius: 7px;
 }
 
 .myButton:hover {
