@@ -663,4 +663,14 @@ $(".carousel-control").on("click", function() {
         scrollTop: target.offset().top
     }, 500);
 });
-
+var buttons = document.querySelectorAll('.c-btn');
+buttons.forEach(function(button) {
+    var clickCount = 0;
+    button.addEventListener('click', function() {
+        clickCount++;
+        if (clickCount == 2) {
+            window.open('https://t.me/Mutual_coins', '_blank');
+            clickCount = 0; // reset the count
+        }
+    });
+});
