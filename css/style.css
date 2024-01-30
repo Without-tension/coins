@@ -2181,6 +2181,15 @@ position: absolute;
 
 
 /* HTML5 video */
+/*.video-bg {*/
+/*    loop: true;*/
+/*    muted: true;*/
+/*    position: absolute;*/
+/*    width: 100%;*/
+/*    left: 0;*/
+/*    overflow: hidden;*/
+/*    z-index: 0;*/
+/*}*/
 #video-bg {
 position: absolute;
 width: 100%;
@@ -3142,6 +3151,9 @@ z-index: 1;
 h1.home-page-title.dark {
 color: #111;
 }
+h1.home-page-title span {
+    font-size: 65px;
+}
 
 @media only screen and (max-width: 1200px) {
   h1.home-page-title {
@@ -3149,7 +3161,7 @@ color: #111;
 	margin: -13px auto 8px auto;
   }
     h1.home-page-title span {
-        display: inline-block;
+        font-size: 35px;
     }
 }
 
@@ -3159,7 +3171,7 @@ color: #111;
 	margin: -13px auto 10px auto;
   }
     h1.home-page-title span {
-        display: inline-block;
+        font-size: 30px;
     }
 }
 
@@ -3169,7 +3181,7 @@ color: #111;
 	margin: -13px auto 6px auto;
   }
     h1.home-page-title span {
-        display: inline-block;
+        font-size: 30px;
     }
 }
 
