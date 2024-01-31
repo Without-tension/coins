@@ -3230,6 +3230,15 @@ h1.home-page-title span {
         font-size: 30px;
     }
 }
+@media only screen and (max-width: 360px) {
+    h1.home-page-title {
+        font-size: 45px;
+        margin: -13px auto 6px auto;
+    }
+    h1.home-page-title span {
+        font-size: 20px;
+    }
+}
 
 .home-page-subtitle-carousel {
 position: relative;
