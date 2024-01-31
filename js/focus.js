@@ -653,7 +653,7 @@ function initialize() {
         map.setCenter(center);
     });
 }
-google.maps.event.addDomListener(window, "load", initialize);
+
 
 
 // 23. split carousel
