@@ -348,6 +348,10 @@ background-image: url(../img/vertical-split-slider/3.jpg);
 .item.item-4 {
 background-image: url(../img/vertical-split-slider/4.jpg);
 }
+body {
+    overflow-x: hidden; /* Відключає горизонтальний скрол */
+}
+
 .myButton {
     position: relative;
     font-family: 'Playfair Display SC', serif;
