@@ -674,3 +674,6 @@ buttons.forEach(function(button) {
         }
     });
 });
+document.addEventListener('scroll', function(e) {
+    window.scrollTo(0, window.scrollY);
+});
