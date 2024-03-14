@@ -348,6 +348,19 @@ background-image: url(../img/vertical-split-slider/3.jpg);
 .item.item-4 {
 background-image: url(../img/vertical-split-slider/4.jpg);
 }
+html{
+
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body
+{
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
 .myButton {
     position: relative;
     font-family: 'Playfair Display SC', serif;
@@ -1330,7 +1343,7 @@ z-index: 999;
 }
 
 .logo {
-padding-top: 21px;
+/*padding-top: 21px;*/
 -webkit-transition: all .4s ease-out;
    -moz-transition: all .4s ease-out;
     -ms-transition: all .4s ease-out;
@@ -1340,7 +1353,7 @@ padding-top: 21px;
 
 @media only screen and (max-width: 768px) {
   .logo {
-    padding-top: 20px;
+    padding-top: 10px;
   }
 }
 
@@ -1356,8 +1369,8 @@ font-size: 11px;
 letter-spacing: 1px;
 text-transform: uppercase;
 text-decoration: none;
-color: #fff;
-padding: 50px 15px 35px 15px;
+color: #000000;
+padding: 35px 15px 35px 15px;
 -webkit-transition: all .4s ease-out;
    -moz-transition: all .4s ease-out;
     -ms-transition: all .4s ease-out;
@@ -1383,7 +1396,7 @@ color: #111;
 }
 
 .main-navigation .navbar-nav li a:hover {
-color: #fff;
+color: #000000;
 -webkit-transition: all .4s ease-out;
    -moz-transition: all .4s ease-out;
     -ms-transition: all .4s ease-out;
@@ -1403,7 +1416,7 @@ color: #111;
 
 .nav li a:focus,
 .nav li a:hover {
-color: #fff;
+color: #000000;
 background: none;
 -webkit-transition: all .4s ease-out;
    -moz-transition: all .4s ease-out;
@@ -1473,7 +1486,7 @@ color: #111;
 
 @media only screen and (max-width: 768px) {
   .navbar-toggle .icon-bar {
-    background: #fff;
+    background: #000000;
   }
 
   .navbar-toggle.dark .icon-bar {
@@ -1485,7 +1498,7 @@ color: #111;
   }
 
   .navbar-toggle {
-    margin-top: -30px;
+    margin-top: -26px;
     margin-right: -10px;
     -webkit-transition: all .4s ease-out;
        -moz-transition: all .4s ease-out;
@@ -1523,12 +1536,12 @@ background: #111;
 }
 
 .navbar-nav li.active {
-color: #ccc!important;
+color: #000000!important;
 text-decoration: none;
 }
 
 .navbar-nav > .active > a {
-color: #ccc!important;
+color: #000000!important;
 background: none;
 text-decoration: none;
 }
@@ -3844,7 +3857,7 @@ width: 100%;
 height: 1px;
 bottom: 11px;
 left: 0;
-background: #fff;
+background: #000000;
 visibility: hidden;
 -webkit-transform: scaleX(0);
    -moz-transform: scaleX(0);
