@@ -1353,7 +1353,7 @@ z-index: 999;
 
 @media only screen and (max-width: 768px) {
   .logo {
-    padding-top: 10px;
+    padding-top: 5px;
   }
 }
 
@@ -1498,7 +1498,7 @@ color: #111;
   }
 
   .navbar-toggle {
-    margin-top: -26px;
+    margin-top: -33px;
     margin-right: -10px;
     -webkit-transition: all .4s ease-out;
        -moz-transition: all .4s ease-out;
