@@ -39,6 +39,28 @@
 22. google maps POSITION
 23. split carousel
 */
+function getRandomImage() {
+    var randomNumber = Math.floor(Math.random() * 58) + 1;
+    return "img/team/" + randomNumber + ".png";
+}
+
+// Коли сторінка завантажиться, змінюємо шлях до всіх зображень
+window.onload = function() {
+    document.querySelectorAll(".character").forEach(function(img) {
+        img.src = getRandomImage();
+    });
+};
+
+// Якщо потрібно змінити картинку на hover, додаємо подію
+document.querySelectorAll(".carousel-img-item-1, .carousel-img-item-2, .carousel-img-item-3, .carousel-img-item-4, .carousel-img-item-5, .carousel-img-item-6")
+    .forEach(function(item) {
+        item.addEventListener("mouseenter", function() {
+            var characterImg = this.nextElementSibling?.querySelector(".character"); // Шукаємо картинку в наступному контейнері
+            if (characterImg) {
+                characterImg.src = getRandomImage();
+            }
+        });
+    });
 $(function() {
     "use strict";
 	
