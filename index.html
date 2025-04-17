@@ -51,43 +51,45 @@
         <div class="navbar-header fadeIn-element">
             <!-- logo start -->
             <div class="logo">
-                <a class="navbar-brand logo" href="#"><!-- logo light start -->
-                    <img alt="Logo" class="logo-light" src="img/logo-light.png"><!-- logo light end -->
-                    <!-- logo dark start -->
-                    <img alt="Logo" class="logo-dark" src="img/logo-dark.png"><!-- logo dark end --></a>
+                <img id="logo-image" alt="Logo" class="logo-light" src="">
+
+                <!--                <a class="navbar-brand logo" href="#">&lt;!&ndash; logo light start &ndash;&gt;-->
+                <!--                    <img alt="Logo" class="logo-light" src="img/logo.png">&lt;!&ndash; logo light end &ndash;&gt;-->
+                <!-- logo dark start -->
+                <!--                    <img alt="Logo" class="logo-dark" src="img/logo-dark.png">&lt;!&ndash; logo dark end &ndash;&gt;</a>-->
             </div><!-- logo end -->
         </div><!-- main navigation start -->
         <div class="main-navigation fadeIn-element">
-            <div class="navbar-header">
-                <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar-collapse" data-toggle="collapse" type="button"><span class="sr-only">Toggle
-                        navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-                <!-- menu start -->
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll link-underline-menu active" href="#home">Актуальна ціна</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll link-underline-menu" href="#about">Про нас</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll link-underline-menu" href="#timeline">Сервіс</a>
-                    </li>
-                    <li>
-                        <!--                        <a class="page-scroll link-underline-menu" href="#services">Сервіс</a>-->
-                        <!--                    </li>-->
-                        <!--                            <li>-->
-                        <!--                                <a class="page-scroll link-underline-menu" href="#works">Works</a>-->
-                        <!--                            </li>-->
-                        <!--                            <li>-->
-                        <!--                                <a class="page-scroll link-underline-menu" href="#news">Буст</a>-->
-                        <!--                            </li>-->
-                        <!--                            <li>-->
-                        <!--                                <a class="page-scroll link-underline-menu" href="#contact">Contact</a>-->
-                        <!--                            </li>-->
-                </ul><!-- menu end -->
-            </div>
+            <!--            <div class="navbar-header">-->
+            <!--                <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar-collapse" data-toggle="collapse" type="button"><span class="sr-only">Toggle-->
+            <!--                        navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>-->
+            <!--            </div>-->
+            <!--            <div class="collapse navbar-collapse" id="navbar-collapse">-->
+            <!--                &lt;!&ndash; menu start &ndash;&gt;-->
+            <!--                <ul class="nav navbar-nav navbar-right">-->
+            <!--                    <li>-->
+            <!--                        <a class="page-scroll link-underline-menu active" href="#home">Актуальна ціна</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a class="page-scroll link-underline-menu" href="#about">Про нас</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a class="page-scroll link-underline-menu" href="#timeline">Сервіс</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a class="page-scroll link-underline-menu" href="#services">Сервіс</a>-->
+            <!--                    </li>-->
+            <!--                            <li>-->
+            <!--                                <a class="page-scroll link-underline-menu" href="#works">Works</a>-->
+            <!--                            </li>-->
+            <!--                            <li>-->
+            <!--                                <a class="page-scroll link-underline-menu" href="#news">Буст</a>-->
+            <!--                            </li>-->
+            <!--                            <li>-->
+            <!--                                <a class="page-scroll link-underline-menu" href="#contact">Contact</a>-->
+            <!--                            </li>-->
+            <!--                </ul>&lt;!&ndash; menu end &ndash;&gt;-->
+            <!--            </div>-->
         </div><!-- main navigation end -->
     </div><!-- container end -->
 </nav><!-- navigation end -->
@@ -684,7 +686,6 @@
                     </div>
                 </div><!-- slick left end -->
                 <!-- services single item img start -->
-
                 <!-- slick right end -->
             </div><!-- col end -->
             <!-- col start -->
@@ -840,10 +841,13 @@
     <div class="container-fluid sections">
         <!-- row start -->
         <div class="row footer-credits">
+            <div id="threejs-container" style="position: relative; width: 100%; height: 400px;">
+                <img class="loading" id="loading" src="img/logo-footer.png" alt="Завантаження..." style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:200px;height:auto;">
+            </div>
             <!-- footer logo start -->
-            <div class="footer-credits-logo">
-                <a href="#"><img alt="Logo Footer" src="img/logo-footer.png"></a>
-            </div><!-- footer logo end -->
+            <!--            <div class="footer-credits-logo">-->
+            <!--                <a href="#"><img alt="Logo Footer" src="img/logo-footer.png"></a>-->
+            <!--            </div>&lt;!&ndash; footer logo end &ndash;&gt;-->
             <!-- footer newsletter form start -->
             <div id="subscribe-wrapper">
                 <h2 class="section-heading newsletter">
@@ -908,6 +912,19 @@
 </script>
 <script src="js/focus.js">
 </script><!-- scripts end -->
+<!-- Add this to your head section to load the importmap -->
+<script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+</script>
+
+<!-- Load the external JS file -->
+<script type="module" src="js/focus.js"></script>
+
 <script type="application/ld+json">
     {
         "@context": "https://schema.org",

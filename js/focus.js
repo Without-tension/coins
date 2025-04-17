@@ -39,6 +39,46 @@
 22. google maps POSITION
 23. split carousel
 */
+//
+const logoImg = document.getElementById('logo-image');
+
+// Справжній випадковий вибір
+const isFirstRange = Math.random() < 0.5;
+console.log('Випадковий вибір:', isFirstRange ? '1-20' : '21-39');
+
+const start = isFirstRange ? 1 : 21;
+const end = isFirstRange ? 20 : 39;
+
+// Генеруємо масив потрібних картинок
+const logos = Array.from({ length: end - start + 1 }, (_, i) => `img/logo${start + i}.png`);
+
+// Вибираємо випадкове зображення, відмінне від поточного
+function getRandomLogo(currentSrc) {
+    let newLogo;
+    do {
+        newLogo = logos[Math.floor(Math.random() * logos.length)];
+    } while (newLogo === currentSrc);
+    return newLogo;
+}
+
+// Плавна заміна з fade-ефектом
+function changeLogo() {
+    logoImg.classList.add('fade-out');
+    setTimeout(() => {
+        const newLogo = getRandomLogo(logoImg.src);
+        logoImg.src = newLogo;
+        logoImg.onload = () => {
+            logoImg.classList.remove('fade-out');
+        };
+    }, 800);
+}
+
+// Перший запуск
+changeLogo();
+setInterval(changeLogo, 9000);
+
+
+
 function getRandomImage() {
     var randomNumber = Math.floor(Math.random() * 58) + 1;
     return "img/team/" + randomNumber + ".png";
@@ -61,15 +101,16 @@ document.querySelectorAll(".carousel-img-item-1, .carousel-img-item-2, .carousel
             }
         });
     });
+
 $(function() {
     "use strict";
-	
-	
+
+
     $(window).on("load", function() {
         // 1. preloader
         $("#preloader").fadeOut(600);
         $(".preloader-bg").delay(400).fadeOut(600);
-		
+
         // 2. fadeIn.element
         setTimeout(function() {
             $(".fadeIn-element").delay(600).css({
@@ -90,7 +131,7 @@ $(function() {
             $(".border-bottom").removeClass("bottom-position");
         }, 0);
     });
-	
+
     // 3. page scroll
     $("a.page-scroll").on("click", function(e) {
         var $anchor = $(this);
@@ -99,7 +140,7 @@ $(function() {
         }, 1500, 'easeInOutExpo');
         e.preventDefault();
     });
-	
+
     // 4. navigation
     // 4-1. highlight navigation
     $("body").scrollspy({
@@ -119,14 +160,14 @@ $(function() {
             $(".navbar-bg-switch").removeClass("main-navigation-bg");
             $(".navbar-bg-switch-bordered").removeClass("main-navigation-bg-bordered");
         }
-		
+
         // 5. to top arrow animation
         if ($(this).scrollTop() > 400) {
             $(".to-top-arrow").addClass("show");
         } else {
             $(".to-top-arrow").removeClass("show");
         }
-		
+
         // 6. IMG navigation icon color switch
         if ($(this).scrollTop() > 600) {
             $("#img-navigation-icon span").addClass("navigation-dark");
@@ -134,7 +175,7 @@ $(function() {
             $("#img-navigation-icon span").removeClass("navigation-dark");
         }
     });
-	
+
     // 7. slick slider
     // 7-1. slick featured left
     $(".slick-left").slick({
@@ -260,7 +301,7 @@ $(function() {
         // pauseOnFocus: false,
         // pauseOnHover: false
     });
-	
+
     // 8. owl carousel
     // 8-1. news carousel
     $("#news-carousel").owlCarousel({
@@ -347,7 +388,7 @@ $(function() {
         },
         autoplayHoverPause: true
     });
-	
+
     // 9. facts counter
     $(".facts-counter-number").appear(function() {
         var count = $(this);
@@ -358,7 +399,7 @@ $(function() {
             refreshInterval: 60
         });
     });
-	
+
     // 10. skills bar
     $(".show-skillbar").appear(function() {
         $(".skillbar").skillBars({
@@ -368,21 +409,21 @@ $(function() {
             decimals: 0
         });
     });
-	
+
     // 11. forms
     // 11-1. contact form
     $("form#form").on("submit", function() {
         $("form#form .error").remove();
         var s = !1;
         if ($(".requiredField").each(function() {
-                if ("" === jQuery.trim($(this).val())) $(this).prev("label").text(), $(this).parent().append('<span class="error">This field is required</span>'), $(this).addClass(
-                    "inputError"), s = !0;
-                else if ($(this).hasClass("email")) {
-                    var r = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-                    r.test(jQuery.trim($(this).val())) || ($(this).prev("label").text(), $(this).parent().append('<span class="error">Invalid email address</span>'), $(this).addClass(
-                        "inputError"), s = !0);
-                }
-            }), !s) {
+            if ("" === jQuery.trim($(this).val())) $(this).prev("label").text(), $(this).parent().append('<span class="error">This field is required</span>'), $(this).addClass(
+                "inputError"), s = !0;
+            else if ($(this).hasClass("email")) {
+                var r = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                r.test(jQuery.trim($(this).val())) || ($(this).prev("label").text(), $(this).parent().append('<span class="error">Invalid email address</span>'), $(this).addClass(
+                    "inputError"), s = !0);
+            }
+        }), !s) {
             $("form#form input.submit").fadeOut("normal", function() {
                 $(this).parent().append("");
             });
@@ -400,14 +441,14 @@ $(function() {
         $("form#subscribe .subscribe-error").remove();
         var s = !1;
         if ($(".subscribe-requiredField").each(function() {
-                if ("" === jQuery.trim($(this).val())) $(this).prev("label").text(), $(this).parent().append('<span class="subscribe-error">Please enter your Email</span>'),
-                    $(this).addClass("inputError"), s = !0;
-                else if ($(this).hasClass("subscribe-email")) {
-                    var r = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-                    r.test(jQuery.trim($(this).val())) || ($(this).prev("label").text(), $(this).parent().append('<span class="subscribe-error">Please enter a valid Email</span>'),
-                        $(this).addClass("inputError"), s = !0);
-                }
-            }), !s) {
+            if ("" === jQuery.trim($(this).val())) $(this).prev("label").text(), $(this).parent().append('<span class="subscribe-error">Please enter your Email</span>'),
+                $(this).addClass("inputError"), s = !0;
+            else if ($(this).hasClass("subscribe-email")) {
+                var r = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                r.test(jQuery.trim($(this).val())) || ($(this).prev("label").text(), $(this).parent().append('<span class="subscribe-error">Please enter a valid Email</span>'),
+                    $(this).addClass("inputError"), s = !0);
+            }
+        }), !s) {
             $("form#subscribe input.submit").fadeOut("normal", function() {
                 $(this).parent().append("");
             });
@@ -420,7 +461,7 @@ $(function() {
         }
         return !1;
     });
-	
+
     // 12. services accordion
     $(".services-accordion ul li span").on("click", function() {
         $(this).parent("li").siblings("li.toggled").removeClass("toggled").children("ul").stop(true, true).slideUp();
@@ -432,12 +473,12 @@ $(function() {
             $(this).parent().removeClass("toggled");
         }
     });
-	
+
     // 13. home fadeOut animation
     $(window).on("scroll", function() {
         $("h1.home-page-title, .home-page-subtitle-carousel, .slick-fullscreen-info").css("opacity", 1 - $(window).scrollTop() / $(".hero-fullscreen, #viewport, .slick-fullscreen").height());
     });
-	
+
     // 14. YTPlayer
     $("#background-video").YTPlayer({
         videoId: "r8j-MWq4HZc", // DEMO URL is: https://www.youtube.com/watch?v=r8j-MWq4HZc
@@ -456,7 +497,7 @@ $(function() {
             autohide: 0
         }
     });
-	
+
     // 15. typed text
     $(".typed-title").typed({
         strings: ["Focused", "Unique", "Modern", "Powerfull"],
@@ -464,7 +505,7 @@ $(function() {
         backDelay: 3500,
         loop: true
     });
-	
+
     // 16. swiper thumbnail slider
     var swipersliderTop = new Swiper(".swiper-slider-top", {
         nextButton: ".swiper-button-next",
@@ -484,7 +525,7 @@ $(function() {
     });
     swipersliderTop.params.control = swipersliderBottom;
     swipersliderBottom.params.control = swipersliderTop;
-	
+
     // 17. IMG navigation
     $("nav.img-navigation-nav a").on("click", function(e) {
         var hash = $(this.hash);
@@ -497,13 +538,13 @@ $(function() {
         $(this).toggleClass("open");
         $("nav.img-navigation-nav").toggleClass("show");
     });
-	
+
     // 18. menu active state
     $(".link-underline-menu").on("click", function() {
         $(".link-underline-menu").removeClass("active");
         $(this).addClass("active");
     });
-	
+
     // 19. Vimeo player
     $("#vimeo-video").vimeofy({
         "url": "https://vimeo.com/95515307", // Vimeo VIDEO URL
@@ -512,7 +553,7 @@ $(function() {
         "loop": true,
         "delay": 1200
     });
-	
+
     // 20. freewall
     var temp = "<div class='cell' style='width:{width}px; height: {height}px; background-image: url(img/freewall/{index}.jpg)'></div>";
     var w = 1,
@@ -540,7 +581,7 @@ $(function() {
     wall.fitHeight($(window).height() - 0);
     // scroll bar appear;
     $(window).trigger("resize");
-	
+
     // 21. Instafeed
     var userFeed = new Instafeed({
         get: "user",
@@ -563,94 +604,94 @@ function initialize() {
     // EDIT: map marker
     var imagePath = "img/location-icon.png";
     var mapOptions = {
-            scrollwheel: false,
-            zoom: 12,
-            center: myLatlng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            styles: [{
-                featureType: "administrative",
-                elementType: "all",
-                stylers: [{
-                    saturation: "-100"
-                }]
-            }, {
-                featureType: "administrative.province",
-                elementType: "all",
-                stylers: [{
-                    visibility: "off"
-                }]
-            }, {
-                featureType: "landscape",
-                elementType: "all",
-                stylers: [{
-                    saturation: -100
-                }, {
-                    lightness: 65
-                }, {
-                    visibility: "on"
-                }]
-            }, {
-                featureType: "poi",
-                elementType: "all",
-                stylers: [{
-                    saturation: -100
-                }, {
-                    lightness: "50"
-                }, {
-                    visibility: "simplified"
-                }]
-            }, {
-                featureType: "road",
-                elementType: "all",
-                stylers: [{
-                    saturation: "-100"
-                }]
-            }, {
-                featureType: "road.highway",
-                elementType: "all",
-                stylers: [{
-                    visibility: "simplified"
-                }]
-            }, {
-                featureType: "road.arterial",
-                elementType: "all",
-                stylers: [{
-                    lightness: "30"
-                }]
-            }, {
-                featureType: "road.local",
-                elementType: "all",
-                stylers: [{
-                    lightness: "40"
-                }]
-            }, {
-                featureType: "transit",
-                elementType: "all",
-                stylers: [{
-                    saturation: -100
-                }, {
-                    visibility: "simplified"
-                }]
-            }, {
-                featureType: "water",
-                elementType: "geometry",
-                stylers: [{
-                    hue: "#ffff00"
-                }, {
-                    lightness: -25
-                }, {
-                    saturation: -97
-                }]
-            }, {
-                featureType: "water",
-                elementType: "labels",
-                stylers: [{
-                    lightness: -25
-                }, {
-                    saturation: -100
-                }]
+        scrollwheel: false,
+        zoom: 12,
+        center: myLatlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        styles: [{
+            featureType: "administrative",
+            elementType: "all",
+            stylers: [{
+                saturation: "-100"
             }]
-        }
+        }, {
+            featureType: "administrative.province",
+            elementType: "all",
+            stylers: [{
+                visibility: "off"
+            }]
+        }, {
+            featureType: "landscape",
+            elementType: "all",
+            stylers: [{
+                saturation: -100
+            }, {
+                lightness: 65
+            }, {
+                visibility: "on"
+            }]
+        }, {
+            featureType: "poi",
+            elementType: "all",
+            stylers: [{
+                saturation: -100
+            }, {
+                lightness: "50"
+            }, {
+                visibility: "simplified"
+            }]
+        }, {
+            featureType: "road",
+            elementType: "all",
+            stylers: [{
+                saturation: "-100"
+            }]
+        }, {
+            featureType: "road.highway",
+            elementType: "all",
+            stylers: [{
+                visibility: "simplified"
+            }]
+        }, {
+            featureType: "road.arterial",
+            elementType: "all",
+            stylers: [{
+                lightness: "30"
+            }]
+        }, {
+            featureType: "road.local",
+            elementType: "all",
+            stylers: [{
+                lightness: "40"
+            }]
+        }, {
+            featureType: "transit",
+            elementType: "all",
+            stylers: [{
+                saturation: -100
+            }, {
+                visibility: "simplified"
+            }]
+        }, {
+            featureType: "water",
+            elementType: "geometry",
+            stylers: [{
+                hue: "#ffff00"
+            }, {
+                lightness: -25
+            }, {
+                saturation: -97
+            }]
+        }, {
+            featureType: "water",
+            elementType: "labels",
+            stylers: [{
+                lightness: -25
+            }, {
+                saturation: -100
+            }]
+        }]
+    }
     // EDIT: map address
     var contentString = "<strong>Focus</strong><br>ex Inc. Touchdown Dr<br>1176 Los Angeles, CA";
     var infowindow = new google.maps.InfoWindow({
@@ -699,3 +740,158 @@ buttons.forEach(function(button) {
 document.addEventListener('scroll', function(e) {
     window.scrollTo(0, window.scrollY);
 });
+
+// Import Three.js modules
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+
+// Wait for DOM to be fully loaded
+// document.addEventListener('DOMContentLoaded', () => {
+//     initThreeJS();
+// });
+
+window.addEventListener('load', () => {
+    setTimeout(initThreeJS, 2000); // можна дати затримку для ще м’якшого UX
+});
+
+function initThreeJS() {
+    const container = document.getElementById('threejs-container');
+
+    // Skip if container doesn't exist
+    if (!container) return;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+    camera.position.set(0, 0.5, 1);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1;
+    container.appendChild(renderer.domElement);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.minDistance = 0.5;
+    controls.maxDistance = 10;
+    controls.maxPolarAngle = Math.PI / 1.5;
+    controls.enabled = false;
+
+    let model;
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetRotationY = 0;
+    let targetRotationX = 0;
+    let currentRotationY = 0;
+    let currentRotationX = 0;
+
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
+    let isTouchingModel = false;
+
+    // Подія для мишки
+    document.addEventListener('mousemove', function(event) {
+        mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -((event.clientY / window.innerHeight) * 2 - 1);
+    });
+
+    // Події для сенсорного екрану — тільки в контейнері
+    let isTouching = false;
+
+    container.addEventListener('touchstart', (event) => {
+        isTouching = true;
+
+        const touch = event.touches[0];
+        const rect = container.getBoundingClientRect();
+
+        pointer.x = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
+        pointer.y = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
+
+        raycaster.setFromCamera(pointer, camera);
+
+        if (model) {
+            const intersects = raycaster.intersectObject(model, true);
+            isTouchingModel = intersects.length > 0;
+        }
+    }, false);
+
+    container.addEventListener('touchmove', (event) => {
+        if (!isTouching || !isTouchingModel) return;
+
+        const touch = event.touches[0];
+        const rect = container.getBoundingClientRect();
+
+        mouseX = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
+        mouseY = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
+
+        event.preventDefault();
+    }, { passive: false });
+
+    container.addEventListener('touchend', () => {
+        isTouching = false;
+        isTouchingModel = false;
+    }, false);
+
+    // Завантаження HDR і GLB
+    new RGBELoader().load('many-coins.hdr', function(texture) {
+        texture.mapping = THREE.EquirectangularReflectionMapping;
+        scene.environment = texture;
+
+        const loader = new GLTFLoader();
+        loader.load(
+            'Official_3d_logo.glb',
+            function(gltf) {
+                model = gltf.scene;
+
+                const box = new THREE.Box3().setFromObject(model);
+                const center = box.getCenter(new THREE.Vector3());
+                model.position.sub(center);
+
+                model.scale.set(0.4, 0.4, 0.4);
+
+                scene.add(model);
+                document.getElementById('loading').style.display = 'none'; // ховаємо картинку, якщо все ок
+            },
+            undefined,
+            function(error) {
+                console.error('Помилка завантаження моделі:', error);
+                // НЕ ховаємо зображення
+            }
+        );
+    });
+
+    // Анімація
+    function animate() {
+        requestAnimationFrame(animate);
+
+        if (model) {
+            targetRotationY = mouseX * Math.PI;
+            targetRotationX = mouseY * Math.PI * -0.1;
+
+            currentRotationY += (targetRotationY - currentRotationY) * 0.1;
+            currentRotationX += (targetRotationX - currentRotationX) * 0.1;
+
+            model.rotation.y = currentRotationY;
+            model.rotation.x = -0.13 * Math.PI + currentRotationX;
+        }
+
+        controls.update();
+        renderer.render(scene, camera);
+    }
+    animate();
+
+    // Адаптив
+    window.addEventListener('resize', function() {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+}

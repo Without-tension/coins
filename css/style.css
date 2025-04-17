@@ -348,6 +348,8 @@ hero content slider IMG BACKGROUND */
     background-image: url(../img/vertical-split-slider/4.jpg);
 }
 
+
+
 /* carousel slider */
 .carousel-img-wrapper {
     position: relative;
@@ -1338,7 +1340,7 @@ section {
     position: relative;
     width: 100%;
     height: auto;
-    padding: 200px 0 0 0;
+    padding: 175px 0 0 0;
 }
 
 section p {
@@ -1874,13 +1876,13 @@ h4.cd-timeline-date {
 
 /* footer */
 #footer {
-    padding: 179px 0 153px 0;
+    padding: 1px 0 40px 0;
     text-align: center;
 }
 
 @media only screen and (max-width: 880px) {
     #footer {
-        padding: 120px 0 92px 0;
+        padding: 1px 0 92px 0;
     }
 }
 
@@ -2038,25 +2040,39 @@ h4.cd-timeline-date {
 }
 
 .logo {
-    /*padding-top: 21px;*/
+    padding-top: 11px;
+    width: 116px;
+    /*height: 55px;*/
+    overflow: hidden;
+    display: inline-block;
     -webkit-transition: all .4s ease-out;
     -moz-transition: all .4s ease-out;
     -ms-transition: all .4s ease-out;
     -o-transition: all .4s ease-out;
     transition: all .4s ease-out;
 }
-
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* або "contain", в залежності від бажаного вигляду */
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
+}
+.logo img.fade-out {
+    opacity: 0;
+}
 @media only screen and (max-width: 768px) {
     .logo {
-        padding-top: 5px;
+        padding-top: 10px;
+        padding-left: 10px;
     }
 }
 
-@media only screen and (min-width: 880px) {
-    .logo.logo-bordered {
-        padding-top: 61px;
-    }
-}
+/*@media only screen and (min-width: 880px) {*/
+/*  .logo.logo-bordered {*/
+/*    padding-top: 61px;*/
+/*  }*/
+/*}*/
 
 .main-navigation .navbar-nav li a {
     font-family: 'Raleway', sans-serif;
@@ -3007,23 +3023,23 @@ source {
 }
 
 .blockquote.bg-color-1 {
-    background-color: #f5f5f5;
+    background-color: #FFFFFF;
 }
 
 .blockquote.bg-color-2 {
-    background-color: #f5f5f5;
+    background-color: #FFFFFF;
 }
 
 .blockquote.bg-color-3 {
-    background-color: #f5f5f5;
+    background-color: #FFFFFF;
 }
 
 .blockquote.bg-color-4 {
-    background-color: #f5f5f5;
+    background-color: #FFFFFF;
 }
 
 .blockquote.bg-color-5 {
-    background-color: #f5f5f5;
+    background-color: #FFFFFF;
 }
 
 
@@ -3031,19 +3047,19 @@ source {
 .slick-slide {
     text-align: center;
     color: #111;
-    height: 550px;
+    height: 400px;
     background: #fff;
 }
 
 @media only screen and (max-width: 880px) {
     .slick-slide {
-        height: 450px;
+        height: 350px;
     }
 }
 
 @media only screen and (max-width: 640px) {
     .slick-slide {
-        height: 350px;
+        height: 300px;
     }
 }
 
@@ -4687,7 +4703,7 @@ a:hover .c-btn {
 
 /* services */
 #services-2 {
-    margin-top: -33px;
+    margin-top: -113px;
 }
 
 @media only screen and (max-width: 880px) {
@@ -4855,7 +4871,7 @@ section h2.section-heading.newsletter {
     position: relative;
     width: 300px;
     height: 160px;
-    margin: 58px auto 72px auto;
+    margin: 1px auto 72px auto;
     background: none;
     text-align: center;
 }
@@ -4863,7 +4879,7 @@ section h2.section-heading.newsletter {
 @media only screen and (max-width: 480px) {
     #subscribe-wrapper {
         width: 260px;
-        margin: 59px auto 65px auto;
+        margin: 1px auto 65px auto;
     }
 }
 
