@@ -812,19 +812,12 @@ function initThreeJS() {
         const touch = event.touches[0];
         const rect = container.getBoundingClientRect();
 
-        pointer.x = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
-        pointer.y = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
-
-        raycaster.setFromCamera(pointer, camera);
-
-        if (model) {
-            const intersects = raycaster.intersectObject(model, true);
-            isTouchingModel = intersects.length > 0;
-        }
+        mouseX = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
+        mouseY = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
     }, false);
 
     container.addEventListener('touchmove', (event) => {
-        if (!isTouching || !isTouchingModel) return;
+        if (!isTouching) return;
 
         const touch = event.touches[0];
         const rect = container.getBoundingClientRect();
@@ -832,13 +825,8 @@ function initThreeJS() {
         mouseX = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
         mouseY = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
 
-        event.preventDefault();
+        event.preventDefault(); // зберігаємо плавність та уникаємо прокрутки
     }, { passive: false });
-
-    container.addEventListener('touchend', () => {
-        isTouching = false;
-        isTouchingModel = false;
-    }, false);
 
     // Завантаження HDR і GLB
     new RGBELoader().load('many-coins.hdr', function(texture) {
