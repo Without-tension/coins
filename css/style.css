@@ -443,18 +443,15 @@ hero content slider IMG BACKGROUND */
     max-width: 250px; /* Додатково обмежуємо максимальний розмір */
     opacity: 0;
     transition: opacity 0.6s, transform 0.8s;
+    pointer-events: none; /* щоб не заважало кліку */
 }
-.carousel-img-item-1:hover + .character-container .character,
-.carousel-img-item-2:hover + .character-container .character,
-.carousel-img-item-3:hover + .character-container .character,
-.carousel-img-item-4:hover + .character-container .character,
-.carousel-img-item-5:hover + .character-container .character,
-.carousel-img-item-6:hover + .character-container .character,
-.carousel-img-item-7:hover + .character-container .character {
+/* Клас, який буде додаватись при hover або click */
+.character.active {
     opacity: 1;
     transform: translateY(-17px) scale(1);
     transition: all 0.7s ease-in-out;
 }
+
 .character-container {
     position: absolute;
     top: 40%;
