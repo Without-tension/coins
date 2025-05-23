@@ -442,7 +442,7 @@ hero content slider IMG BACKGROUND */
     width: 40%; /* Адаптуй під свої розміри */
     max-width: 250px; /* Додатково обмежуємо максимальний розмір */
     opacity: 0;
-    transition: opacity 0.6s, transform 0.8s;
+    transition: opacity 0.7s, transform 0.7s;
     pointer-events: none; /* щоб не заважало кліку */
 }
 /* Клас, який буде додаватись при hover або click */
@@ -893,6 +893,7 @@ hero content slider IMG BACKGROUND */
         left: -13px;
     }
 }
+
 /* team box */
 .team-box {
     position: relative;
@@ -961,6 +962,77 @@ hero content slider IMG BACKGROUND */
         bottom: -8px;
         padding: 5px 10px;
         font-size: 10px;
+    }
+}
+.custom-team-box {
+    background: linear-gradient(10deg, #000 10%, #FFD350 100%)!important;
+    -webkit-background-clip: text!important;
+    background-clip: text!important;
+    color: transparent!important;
+
+    /* Стилі тексту */
+    bottom: 40px !important;
+    font-family: 'Playfair Display SC', serif !important;
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    display: inline !important;
+    line-height: normal !important;
+}
+@media only screen and (max-width: 1200px) {
+    .custom-team-box {
+        bottom: 65px !important;
+    }
+}
+@media only screen and (max-width: 1024px) {
+    .custom-team-box {
+        bottom: 60px !important;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .custom-team-box {
+        bottom: 40px !important;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .custom-team-box {
+        bottom: 30px !important;
+    }
+}
+@media only screen and (max-width: 640px) {
+    .custom-team-box {
+        bottom: 20px !important;
+        padding: 5px 10px !important;
+        font-size: 15px !important;
+    }
+}
+@media only screen and (max-width: 580px) {
+    .custom-team-box {
+        bottom: -10px !important;
+        padding: 5px 10px !important;
+        font-size: 15px !important;
+    }
+}
+@media only screen and (max-width: 530px) {
+    .custom-team-box {
+        bottom: -10px !important;
+        padding: 5px 10px !important;
+        font-size: 15px!important;
+    }
+}
+@media only screen and (max-width: 430px) {
+    .custom-team-box {
+        bottom: -10px !important;
+        padding: 5px 10px !important;
+        font-size: 15px !important;
+    }
+}
+@media only screen and (max-width: 367px) {
+    .custom-team-box {
+        bottom: -8px !important;
+        padding: 5px 10px !important;
+        font-size: 10px !important;
     }
 }
 .team-box span {
@@ -1039,9 +1111,6 @@ h1.home-page-title span {
         font-size: 20px;
     }
 }
-
-
-
 
 
 html{
@@ -1383,9 +1452,13 @@ section h2.section-heading {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: -0.04em;
-    color: #000;
     margin-bottom: 106px;
     z-index: 1;
+    /* Градієнтний текст */
+    background: linear-gradient(50deg, #000 33%, #FFD350 100%);
+    -webkit-background-clip: text;
+    background-clip: text; /* для Firefox */
+    color: transparent;
 }
 
 @media only screen and (max-width: 880px) {
@@ -2865,6 +2938,13 @@ source {
         height: 100%;
     }
 }
+.rounded-video {
+    border-bottom-right-radius: 60% 100%;
+    overflow: hidden;
+}
+
+
+
 /*#video-bg {*/
 /*position: absolute;*/
 /*width: 100%;*/
