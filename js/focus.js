@@ -96,15 +96,75 @@ const items = document.querySelectorAll(
     ".carousel-img-item-4, .carousel-img-item-5, .carousel-img-item-6"
 );
 
+// Змінна для відстеження стану відображення карти
+let isCardDisplayed = false;
+let carouselInstance = null;
+
+// Функція для перевірки, чи елемент знаходиться в центрі каруселі
+function isItemInCenter(item) {
+    // Перевіряємо, чи батьківський елемент має клас 'center'
+    // Спочатку знаходимо найближчий .owl-item
+    let currentElement = item;
+    while (currentElement && !currentElement.classList.contains('owl-item')) {
+        currentElement = currentElement.parentElement;
+    }
+
+    // Перевіряємо, чи має .owl-item клас 'center'
+    return currentElement && currentElement.classList.contains('center');
+}
+
+// Функція для приховування всіх карт
+function hideAllCards() {
+    document.querySelectorAll('.character').forEach(card => {
+        card.classList.remove('active');
+    });
+
+    // Відновлюємо автоматичне перегортання, якщо карта була відображена
+    if (isCardDisplayed && carouselInstance) {
+        carouselInstance.trigger('play.owl.autoplay');
+        isCardDisplayed = false;
+    }
+}
+
+// Зберігаємо посилання на карусель після ініціалізації
+$(document).ready(function() {
+    carouselInstance = $("#carousel-img-carousel");
+
+    // Додаємо обробники подій для перегортання каруселі
+    // 'translated.owl.carousel' - коли перегортання завершено
+    carouselInstance.on('translated.owl.carousel', function() {
+        hideAllCards();
+    });
+
+    // 'drag.owl.carousel' - коли користувач починає перетягувати карусель
+    carouselInstance.on('drag.owl.carousel', function() {
+        hideAllCards();
+    });
+
+    // 'changed.owl.carousel' - коли змінюється активний слайд
+    carouselInstance.on('changed.owl.carousel', function() {
+        hideAllCards();
+    });
+});
+
 items.forEach(function (item) {
     const getCharacterImg = () => item.nextElementSibling?.querySelector(".character");
 
     // Hover: показати + змінити зображення
     item.addEventListener("mouseenter", function () {
-        const characterImg = getCharacterImg();
-        if (characterImg) {
-            characterImg.src = getRandomImage(); // нова картинка при кожному hover
-            characterImg.classList.add("active");
+        // Показуємо карту тільки якщо елемент в центрі
+        if (isItemInCenter(item)) {
+            const characterImg = getCharacterImg();
+            if (characterImg) {
+                characterImg.src = getRandomImage(); // нова картинка при кожному hover
+                characterImg.classList.add("active");
+
+                // Зупиняємо автоматичне перегортання
+                if (carouselInstance) {
+                    carouselInstance.trigger('stop.owl.autoplay');
+                    isCardDisplayed = true;
+                }
+            }
         }
     });
 
@@ -113,19 +173,34 @@ items.forEach(function (item) {
         const characterImg = getCharacterImg();
         if (characterImg) {
             characterImg.classList.remove("active");
+
+            // Відновлюємо автоматичне перегортання
+            if (isCardDisplayed && carouselInstance) {
+                carouselInstance.trigger('play.owl.autoplay');
+                isCardDisplayed = false;
+            }
         }
     });
 
     // Click: плавне оновлення картинки
     item.addEventListener("click", function () {
-        const characterImg = getCharacterImg();
-        if (characterImg) {
-            characterImg.classList.remove("active"); // плавно ховаємо
+        // Оновлюємо карту тільки якщо елемент в центрі
+        if (isItemInCenter(item)) {
+            const characterImg = getCharacterImg();
+            if (characterImg) {
+                characterImg.classList.remove("active"); // плавно ховаємо
 
-            setTimeout(() => {
-                characterImg.src = getRandomImage(); // змінюємо
-                characterImg.classList.add("active"); // плавно показуємо
-            }, 600); // час відповідає CSS transition: opacity 0.6s
+                setTimeout(() => {
+                    characterImg.src = getRandomImage(); // змінюємо
+                    characterImg.classList.add("active"); // плавно показуємо
+
+                    // Зупиняємо автоматичне перегортання
+                    if (carouselInstance) {
+                        carouselInstance.trigger('stop.owl.autoplay');
+                        isCardDisplayed = true;
+                    }
+                }, 600); // час відповідає CSS transition: opacity 0.6s
+            }
         }
     });
 });
@@ -416,7 +491,10 @@ $(function() {
                 items: 3
             }
         },
-        autoplayHoverPause: true
+        autoplayHoverPause: true,
+        touchDrag: false,
+        mouseDrag: false,
+        pullDrag: false
     });
 
     // 9. facts counter
