@@ -1,0 +1,17 @@
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local / env (none required for this static site, keep for safety)
+.env
+.env.*
+!.env.example
+
+# Logs / temp
+*.log
+*.tmp
+*~
