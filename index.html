@@ -183,6 +183,640 @@
         <!-- row start -->
         <div class="row carousel-img-wrapper">
 
+
+            <!-- START: Мінімалістичний селектор та повзунки (White Aesthetic Premium) -->
+            <div class="col-xs-12 col-md-10 col-lg-8 mc-calc-wrapper">
+                <style>
+                    .mc-calc-wrapper {
+                        float: none !important;
+                        margin-left: auto !important;
+                        margin-right: auto !important;
+                        clear: both;
+                        position: relative;
+                        z-index: 25;
+                        margin-top: 45px;
+                        margin-bottom: 35px;
+                        max-width: 820px;
+                        font-family: 'Raleway', sans-serif;
+                        color: #111;
+                        box-sizing: border-box;
+                        touch-action: manipulation;
+                    }
+
+                    .mc-calc-wrapper * {
+                        box-sizing: border-box;
+                        -webkit-tap-highlight-color: transparent;
+                    }
+
+                    .mc-calc-title {
+                        font-family: 'Playfair Display SC', serif;
+                        font-size: 20px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        letter-spacing: 0.08em;
+                        text-align: center;
+                        color: #111;
+                        margin-bottom: 25px;
+                    }
+
+                    /* Вибір платформи */
+                    .mc-platform-group {
+                        display: flex;
+                        justify-content: center;
+                        gap: 16px;
+                        margin-bottom: 45px;
+                        flex-wrap: wrap;
+                    }
+
+                    .mc-plat-btn {
+                        position: relative;
+                        display: inline-block;
+                        flex: 1;
+                        max-width: 190px;
+                        min-width: 130px;
+                        text-align: center;
+                        background: #fff;
+                        border: 1px solid #111;
+                        color: #111;
+                        padding: 12px 10px;
+                        font-family: 'Raleway', sans-serif;
+                        font-size: 11px;
+                        font-weight: 700;
+                        letter-spacing: 0.2em;
+                        text-transform: uppercase;
+                        cursor: pointer;
+                        outline: none !important;
+                        overflow: hidden;
+                        user-select: none;
+                        -webkit-user-select: none;
+                        transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    }
+
+                    .mc-plat-btn span {
+                        position: relative;
+                        z-index: 2;
+                        display: inline-block;
+                        transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    }
+
+                    .mc-plat-btn::before {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        right: 0;
+                        z-index: 1;
+                        -webkit-transform-origin: right center;
+                        transform-origin: right center;
+                        -webkit-transform: scale(0, 1);
+                        transform: scale(0, 1);
+                        -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    }
+
+                    .mc-plat-btn:hover::before,
+                    .mc-plat-btn.active::before {
+                        -webkit-transform-origin: left center;
+                        transform-origin: left center;
+                        -webkit-transform: scale(1, 1);
+                        transform: scale(1, 1);
+                    }
+
+                    .mc-plat-btn:hover span,
+                    .mc-plat-btn.active span {
+                        color: #fff !important;
+                    }
+
+                    /* Преміальні темні насичені кольори */
+                    .mc-plat-btn[data-value="PlayStation"]::before { background: #002b66; }
+                    .mc-plat-btn[data-value="PlayStation"]:hover,
+                    .mc-plat-btn[data-value="PlayStation"].active { border-color: #002b66; }
+
+                    .mc-plat-btn[data-value="Xbox"]::before { background: #09480a; }
+                    .mc-plat-btn[data-value="Xbox"]:hover,
+                    .mc-plat-btn[data-value="Xbox"].active { border-color: #09480a; }
+
+                    .mc-plat-btn[data-value="PC"]::before { background: #b34700; }
+                    .mc-plat-btn[data-value="PC"]:hover,
+                    .mc-plat-btn[data-value="PC"].active { border-color: #b34700; }
+
+                    /* Поля вводу */
+                    .mc-fields-grid {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 40px;
+                        padding: 0 10px;
+                    }
+
+                    .mc-field-block {
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    .mc-field-top {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: baseline;
+                        margin-bottom: 12px;
+                    }
+
+                    .mc-label {
+                        font-family: 'Raleway', sans-serif;
+                        font-size: 11px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        letter-spacing: 0.12em;
+                        color: #777;
+                    }
+
+                    /* Підказки (Tooltips) */
+                    .mc-tooltip-container {
+                        position: relative;
+                        display: inline-flex;
+                        align-items: center;
+                        cursor: pointer;
+                    }
+
+                    .mc-help-icon {
+                        display: inline-flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 14px;
+                        height: 14px;
+                        border-radius: 50%;
+                        border: 1px solid #c0c0c0;
+                        color: #999;
+                        font-size: 9px;
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: 700;
+                        margin-left: 6px;
+                        transition: all 0.25s ease;
+                        vertical-align: middle;
+                        line-height: 1;
+                    }
+
+                    .mc-tooltip-container:hover .mc-help-icon {
+                        border-color: #111;
+                        color: #111;
+                    }
+
+                    .mc-tooltip-bubble {
+                        position: absolute;
+                        bottom: calc(100% + 10px);
+                        left: 50%;
+                        transform: translateX(-50%) translateY(5px);
+                        width: 250px;
+                        background: #111;
+                        color: #ffffff;
+                        font-family: 'Raleway', sans-serif;
+                        font-size: 11px;
+                        line-height: 1.45;
+                        font-weight: 500;
+                        text-transform: none;
+                        letter-spacing: normal;
+                        padding: 10px 14px;
+                        border-radius: 6px;
+                        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+                        pointer-events: none;
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+                        z-index: 50;
+                        text-align: center;
+                    }
+
+                    .mc-tooltip-bubble::after {
+                        content: "";
+                        position: absolute;
+                        top: 100%;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        border-width: 5px;
+                        border-style: solid;
+                        border-color: #111 transparent transparent transparent;
+                    }
+
+                    .mc-tooltip-container:hover .mc-tooltip-bubble {
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translateX(-50%) translateY(0);
+                    }
+
+                    .mc-input-container {
+                        display: flex;
+                        align-items: baseline;
+                        border-bottom: 1px solid #111;
+                        padding-bottom: 3px;
+                        width: 140px;
+                        transition: border-color 0.3s;
+                    }
+
+                    .mc-input-container:focus-within {
+                        border-bottom-color: var(--accent-active, #111);
+                    }
+
+                    .mc-input {
+                        width: 100%;
+                        border: none;
+                        background: transparent;
+                        font-family: 'Playfair Display SC', serif;
+                        font-size: 18px;
+                        font-weight: 700;
+                        color: #111;
+                        text-align: right;
+                        padding: 0;
+                        margin: 0;
+                        outline: none;
+                    }
+
+                    .mc-unit {
+                        font-family: 'Raleway', sans-serif;
+                        font-size: 10px;
+                        font-weight: 600;
+                        color: #999;
+                        margin-left: 6px;
+                        text-transform: uppercase;
+                    }
+
+                    /* Повзунки з FC-трикутником */
+                    .mc-range-box {
+                        position: relative;
+                        padding: 16px 0 8px 0;
+                    }
+
+                    .mc-range {
+                        -webkit-appearance: none;
+                        appearance: none;
+                        width: 100%;
+                        height: 3px;
+                        background: #e8e8e8;
+                        outline: none;
+                        margin: 0;
+                        cursor: pointer;
+                        touch-action: pan-y;
+                        border-radius: 2px;
+                        transition: background 0.1s ease;
+                    }
+
+                    /* WebKit Slider Thumb (Chrome, Safari, iOS) */
+                    .mc-range::-webkit-slider-thumb {
+                        -webkit-appearance: none;
+                        appearance: none;
+                        width: 18px;
+                        height: 18px;
+                        background-color: var(--accent-active, #111);
+                        clip-path: polygon(50% 100%, 0 0, 100% 0);
+                        -webkit-clip-path: polygon(50% 100%, 0 0, 100% 0);
+                        cursor: pointer;
+                        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s ease, filter 0.25s ease;
+                        filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.25));
+                    }
+
+                    .mc-range:hover::-webkit-slider-thumb {
+                        filter: drop-shadow(0 0 6px var(--accent-glow, rgba(0, 0, 0, 0.35)));
+                    }
+
+                    .mc-range::-webkit-slider-thumb:active {
+                        transform: scale(1.3);
+                        filter: drop-shadow(0 0 8px var(--accent-glow-strong, rgba(0, 0, 0, 0.7))) drop-shadow(0 0 14px var(--accent-glow, rgba(0, 0, 0, 0.4)));
+                    }
+
+                    /* Firefox Slider Thumb */
+                    .mc-range::-moz-range-thumb {
+                        width: 18px;
+                        height: 18px;
+                        border: none;
+                        background-color: var(--accent-active, #111);
+                        clip-path: polygon(50% 100%, 0 0, 100% 0);
+                        cursor: pointer;
+                        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s ease, filter 0.25s ease;
+                        filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.25));
+                    }
+
+                    .mc-range:hover::-moz-range-thumb {
+                        filter: drop-shadow(0 0 6px var(--accent-glow, rgba(0, 0, 0, 0.35)));
+                    }
+
+                    .mc-range::-moz-range-thumb:active {
+                        transform: scale(1.3);
+                        filter: drop-shadow(0 0 8px var(--accent-glow-strong, rgba(0, 0, 0, 0.7))) drop-shadow(0 0 14px var(--accent-glow, rgba(0, 0, 0, 0.4)));
+                    }
+
+                    .mc-range-ticks {
+                        display: flex;
+                        justify-content: space-between;
+                        font-size: 10px;
+                        color: #aaa;
+                        margin-top: 6px;
+                        font-weight: 500;
+                        letter-spacing: 0.05em;
+                    }
+
+                    @media only screen and (max-width: 768px) {
+                        .mc-calc-wrapper {
+                            margin-top: 25px;
+                            margin-bottom: 20px;
+                            padding: 0 15px;
+                        }
+
+                        .mc-fields-grid {
+                            grid-template-columns: 1fr;
+                            gap: 25px;
+                            padding: 0;
+                        }
+
+                        .mc-platform-group {
+                            gap: 8px;
+                            margin-bottom: 30px;
+                        }
+
+                        .mc-plat-btn {
+                            padding: 10px 4px;
+                            font-size: 10px;
+                            min-width: unset;
+                        }
+
+                        .mc-tooltip-bubble {
+                            left: 0;
+                            transform: translateX(0) translateY(5px);
+                        }
+                        .mc-tooltip-bubble::after {
+                            left: 30px;
+                        }
+                        .mc-tooltip-container:hover .mc-tooltip-bubble {
+                            transform: translateX(0) translateY(0);
+                        }
+
+                        .mc-range::-webkit-slider-thumb {
+                            width: 22px;
+                            height: 22px;
+                        }
+                        .mc-range::-moz-range-thumb {
+                            width: 22px;
+                            height: 22px;
+                        }
+                    }
+                </style>
+
+                <div class="mc-calc-title">Параметри замовлення</div>
+
+                <!-- Селектор платформи -->
+                <div class="mc-platform-group" id="mcPlatformSelector">
+                    <button type="button" class="mc-plat-btn" data-value="PlayStation"><span>PlayStation</span></button>
+                    <button type="button" class="mc-plat-btn" data-value="Xbox"><span>Xbox</span></button>
+                    <button type="button" class="mc-plat-btn" data-value="PC"><span>PC</span></button>
+                </div>
+
+                <!-- Поля та динамічні повзунки -->
+                <div class="mc-fields-grid">
+                    <!-- Поле 1: Потрібно монет (старт 100k, крок 50k, повзунок до 1.7M) -->
+                    <div class="mc-field-block">
+                        <div class="mc-field-top">
+                            <div class="mc-tooltip-container">
+                                <span class="mc-label">Кількість для покупки</span>
+                                <span class="mc-help-icon">?</span>
+                                <div class="mc-tooltip-bubble">
+                                    Вкажіть бажану кількість монет для поповнення вашого ігрового балансу
+                                </div>
+                            </div>
+                            <div class="mc-input-container">
+                                <input type="text" class="mc-input" id="mcCoinsInput" value="100 000" inputmode="numeric" autocomplete="off">
+                                <span class="mc-unit">монет</span>
+                            </div>
+                        </div>
+                        <div class="mc-range-box">
+                            <input type="range" class="mc-range" id="mcCoinsRange" min="50000" max="1700000" step="50000" value="100000">
+                        </div>
+                        <div class="mc-range-ticks">
+                            <span>50 тис.</span>
+                            <span>850 тис.</span>
+                            <span>1.7 млн</span>
+                        </div>
+                    </div>
+
+                    <!-- Поле 2: Баланс на акаунті -->
+                    <div class="mc-field-block">
+                        <div class="mc-field-top">
+                            <div class="mc-tooltip-container">
+                                <span class="mc-label">Монет на акаунті</span>
+                                <span class="mc-help-icon">?</span>
+                                <div class="mc-tooltip-bubble">
+                                    Вкажіть будь ласка скільки монет на вашому акаунті FC 27 аби ми змогли підібрати оптимальну карту для покупки
+                                </div>
+                            </div>
+                            <div class="mc-input-container">
+                                <input type="text" class="mc-input" id="mcBalanceInput" value="50 000" inputmode="numeric" autocomplete="off">
+                                <span class="mc-unit">монет</span>
+                            </div>
+                        </div>
+                        <div class="mc-range-box">
+                            <input type="range" class="mc-range" id="mcBalanceRange" min="0" max="190" step="1" value="50">
+                        </div>
+                        <div class="mc-range-ticks">
+                            <span>0</span>
+                            <span>500 тис.</span>
+                            <span>1 млн</span>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    (function() {
+                        var selectedPlatform = null;
+
+                        var platformThemes = {
+                            'PlayStation': {
+                                start: '#001a40',
+                                end: '#0048a8',
+                                glow: 'rgba(0, 72, 168, 0.4)',
+                                glowStrong: 'rgba(0, 72, 168, 0.85)'
+                            },
+                            'Xbox': {
+                                start: '#052906',
+                                end: '#0f7811',
+                                glow: 'rgba(15, 120, 17, 0.4)',
+                                glowStrong: 'rgba(15, 120, 17, 0.85)'
+                            },
+                            'PC': {
+                                start: '#662900',
+                                end: '#f56200',
+                                glow: 'rgba(245, 98, 0, 0.4)',
+                                glowStrong: 'rgba(245, 98, 0, 0.85)'
+                            },
+                            'Default': {
+                                start: '#222222',
+                                end: '#111111',
+                                glow: 'rgba(0, 0, 0, 0.25)',
+                                glowStrong: 'rgba(0, 0, 0, 0.65)'
+                            }
+                        };
+
+                        var wrapper = document.querySelector('.mc-calc-wrapper');
+
+                        function applyTheme(platform) {
+                            var theme = platformThemes[platform] || platformThemes['Default'];
+                            wrapper.style.setProperty('--accent-active', theme.end);
+                            wrapper.style.setProperty('--accent-glow', theme.glow);
+                            wrapper.style.setProperty('--accent-glow-strong', theme.glowStrong);
+
+                            updateCoinsTrack();
+                            updateBalanceTrack();
+                        }
+
+                        function formatNumber(val) {
+                            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                        }
+
+                        function parseNumber(val) {
+                            var clean = val.toString().replace(/\D/g, '');
+                            return clean === '' ? 0 : parseInt(clean, 10);
+                        }
+
+                        function stepToBalance(step) {
+                            step = parseInt(step, 10);
+                            if (step <= 100) {
+                                return step * 1000;
+                            } else {
+                                return 100000 + (step - 100) * 10000;
+                            }
+                        }
+
+                        function balanceToStep(val) {
+                            val = parseInt(val, 10);
+                            if (val <= 100000) {
+                                return Math.round(val / 1000);
+                            } else if (val <= 1000000) {
+                                return 100 + Math.round((val - 100000) / 10000);
+                            }
+                            return 190;
+                        }
+
+                        function updateCoinsTrack() {
+                            var slider = document.getElementById('mcCoinsRange');
+                            if (!slider) return;
+                            var min = parseFloat(slider.min);
+                            var max = parseFloat(slider.max);
+                            var cur = parseFloat(slider.value);
+                            var percent = ((cur - min) / (max - min)) * 100;
+                            var theme = platformThemes[selectedPlatform] || platformThemes['Default'];
+                            slider.style.background = 'linear-gradient(to right, ' + theme.start + ' 0%, ' + theme.end + ' ' + percent + '%, #e8e8e8 ' + percent + '%, #e8e8e8 100%)';
+                        }
+
+                        function updateBalanceTrack() {
+                            var slider = document.getElementById('mcBalanceRange');
+                            if (!slider) return;
+                            var cur = parseFloat(slider.value);
+                            var percent = (cur / 190) * 100;
+                            var theme = platformThemes[selectedPlatform] || platformThemes['Default'];
+                            slider.style.background = 'linear-gradient(to right, ' + theme.start + ' 0%, ' + theme.end + ' ' + percent + '%, #e8e8e8 ' + percent + '%, #e8e8e8 100%)';
+                        }
+
+                        var buttons = document.querySelectorAll('.mc-plat-btn');
+                        buttons.forEach(function(btn) {
+                            btn.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                buttons.forEach(function(b) { b.classList.remove('active'); });
+                                this.classList.add('active');
+                                selectedPlatform = this.getAttribute('data-value');
+                                applyTheme(selectedPlatform);
+                                syncTelegramLink();
+                            });
+                        });
+
+                        // 1. Повзунок та поле кількості монет
+                        var coinsRange = document.getElementById('mcCoinsRange');
+                        var coinsInput = document.getElementById('mcCoinsInput');
+
+                        ['input', 'change', 'touchmove'].forEach(function(evt) {
+                            coinsRange.addEventListener(evt, function() {
+                                coinsInput.value = formatNumber(this.value);
+                                updateCoinsTrack();
+                                syncTelegramLink();
+                            });
+                        });
+
+                        coinsInput.addEventListener('input', function() {
+                            var num = parseNumber(this.value);
+                            this.value = num === 0 ? '' : formatNumber(num);
+                            if (num >= parseFloat(coinsRange.min) && num <= parseFloat(coinsRange.max)) {
+                                coinsRange.value = num;
+                            } else if (num > parseFloat(coinsRange.max)) {
+                                coinsRange.value = coinsRange.max;
+                            }
+                            updateCoinsTrack();
+                            syncTelegramLink();
+                        });
+
+                        coinsInput.addEventListener('blur', function() {
+                            var num = parseNumber(this.value);
+                            if (num < parseFloat(coinsRange.min) && num !== 0) num = parseFloat(coinsRange.min);
+                            this.value = formatNumber(num);
+                            coinsRange.value = Math.min(num, parseFloat(coinsRange.max));
+                            updateCoinsTrack();
+                            syncTelegramLink();
+                        });
+
+                        // 2. Повзунок та поле балансу
+                        var balanceRange = document.getElementById('mcBalanceRange');
+                        var balanceInput = document.getElementById('mcBalanceInput');
+
+                        ['input', 'change', 'touchmove'].forEach(function(evt) {
+                            balanceRange.addEventListener(evt, function() {
+                                var calculated = stepToBalance(this.value);
+                                balanceInput.value = formatNumber(calculated);
+                                updateBalanceTrack();
+                                syncTelegramLink();
+                            });
+                        });
+
+                        balanceInput.addEventListener('input', function() {
+                            var num = parseNumber(this.value);
+                            this.value = num === 0 ? '' : formatNumber(num);
+                            balanceRange.value = balanceToStep(num);
+                            updateBalanceTrack();
+                            syncTelegramLink();
+                        });
+
+                        balanceInput.addEventListener('blur', function() {
+                            var num = parseNumber(this.value);
+                            this.value = formatNumber(num);
+                            balanceRange.value = balanceToStep(num);
+                            updateBalanceTrack();
+                            syncTelegramLink();
+                        });
+
+                        // Оновлений шаблон для Telegram
+                        function syncTelegramLink() {
+                            var coins = coinsInput.value || '0';
+                            var balance = balanceInput.value || '0';
+                            var mainBtn = document.getElementById('button-id');
+
+                            if (mainBtn) {
+                                var platText = selectedPlatform ? selectedPlatform : "(платформу не вказано)";
+                                var text = "Вітаю. Хочу оформити замовлення:\n" +
+                                    "🎮 Платформа: " + platText + "\n" +
+                                    "💰 Потрібно: " + coins + "\n" +
+                                    "🪙 На моєму акаунті: " + balance;
+
+                                var url = "https://t.me/Mutual_coins?text=" + encodeURIComponent(text);
+                                mainBtn.onclick = function(e) {
+                                    e.preventDefault();
+                                    window.open(url, '_blank');
+                                };
+                            }
+                        }
+
+                        applyTheme(null);
+                        updateCoinsTrack();
+                        updateBalanceTrack();
+                        syncTelegramLink();
+                    })();
+                </script>
+            </div>
+            <!-- END: Мінімалістичний селектор та повзунки -->
+
+
             <!-- col start -->
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading secondary">
